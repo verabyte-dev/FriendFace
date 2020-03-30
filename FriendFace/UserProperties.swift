@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Used to decode JSON data for User entity
 struct UserProperties: Decodable, Hashable {
     let id: String
     let isActive: Bool
@@ -22,6 +23,7 @@ struct UserProperties: Decodable, Hashable {
     let friends: [FriendProperties]
 }
 
+/// Used to decode JSON friends array for Friend entity
 struct FriendProperties: Decodable, Hashable {
     let id: String
     let name: String
