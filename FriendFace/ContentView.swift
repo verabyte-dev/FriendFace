@@ -9,15 +9,6 @@
 import CoreData
 import SwiftUI
 
-extension Date {
-    func format() -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Calendar.current.locale
-        formatter.dateStyle = .medium
-        return formatter.string(from: self)
-    }
-}
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: User.entity(), sortDescriptors: [
@@ -43,6 +34,7 @@ struct ContentView: View {
         }
     }
     
+    /// Decodes JSON data into property structs
     func decodeData(data: Data) {
         var userPropertiesArray = [UserProperties]()
         let decoder = JSONDecoder()
@@ -57,6 +49,7 @@ struct ContentView: View {
         }
     }
     
+    /// Deletes all Core Data User records
     func deleteData() {
         for user in users {
             moc.delete(user)
@@ -64,6 +57,7 @@ struct ContentView: View {
         saveData()
     }
     
+    /// Deletes selected User at offset index
     func deleteUser(at offsets: IndexSet) {
         for offset in offsets {
             let user = users[offset]
@@ -72,6 +66,7 @@ struct ContentView: View {
         saveData()
     }
     
+    /// Loads JSON data from URL using URL Session
     func loadData() {
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
             print("Invalid URL")
@@ -91,6 +86,7 @@ struct ContentView: View {
         }.resume()
     }
     
+    /// Saves Core Data if there were any changes
     func saveData() {
         if self.moc.hasChanges {
             print("Saving data...")
@@ -102,6 +98,7 @@ struct ContentView: View {
         }
     }
     
+    /// Adds User records to Core Data
     func updateCoreData(with userPropertiesArray: [UserProperties]) {
         for userData in userPropertiesArray {
             let user = User(context: moc)

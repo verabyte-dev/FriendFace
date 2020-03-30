@@ -51,18 +51,6 @@ extension User {
     public var wrappedAbout: String {
         about ?? "Unknown about"
     }
-
-    func update(with userProperties: UserProperties) {
-        id = userProperties.id
-        name = userProperties.name
-        isActive = userProperties.isActive
-        age = Int16(userProperties.age)
-        company = userProperties.company
-        email = userProperties.email
-        address = userProperties.address
-        about = userProperties.about
-        registered = userProperties.registered
-    }
     
     public var tagArray: [Tag] {
         let set = tag as? Set<Tag> ?? []
@@ -77,7 +65,6 @@ extension User {
             $0.wrappedName < $1.wrappedName
         }
     }
-
 }
 
 // MARK: Generated accessors for friend

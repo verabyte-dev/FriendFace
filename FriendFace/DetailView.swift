@@ -9,6 +9,16 @@
 import SwiftUI
 import CoreData
 
+/// Formats date to String using medium format
+extension Date {
+    func format() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Calendar.current.locale
+        formatter.dateStyle = .medium
+        return formatter.string(from: self)
+    }
+}
+
 struct DetailLine: View {
     let label: String
     let text: String
@@ -55,6 +65,7 @@ struct DetailView: View {
         .navigationBarTitle(Text(user.wrappedName), displayMode: .automatic)
     }
         
+    /// Returns a String containing all the tags separated with a comma
     func tagArray() -> String {
         var tagString = ""
         var tagCount = 0

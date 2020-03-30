@@ -38,9 +38,11 @@ struct FriendView: View {
     
     init(friend: Friend) {
         self.friend = friend
+        // Initialize fetchRequest with the User record that matches the Friend id
         fetchRequest = FetchRequest<User>(entity: User.entity(), sortDescriptors: [], predicate: NSPredicate(format: "id LIKE %@", friend.wrappedId))
     }
     
+    /// Returns a String containing tags separated by a comma
     func tagArray() -> String {
         var tagString = ""
         guard let tagArray = friendData.first?.tagArray else { return "" }
