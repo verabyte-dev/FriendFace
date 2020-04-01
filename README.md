@@ -1,3 +1,5 @@
 # FriendFace
 
-Project created during #100DaysOfSwiftUI tutorial for day 61.  This project is for SwiftUI and utilizes Core Data.  JSON data is obtained by URLSession, decoded and then imported into Core Data for persistence.
+Day 61 of #100DaysOfSwiftUI challenge to create a Core Data app using SwiftUI.
+
+FriendFace obtains JSON data using URLSession, decodes the data using JSONDecoder and then imports the data into Core Data for persistence.  Unlike many other Core Data examples, this app shows how to import one-to-many relationship data.
